@@ -19,7 +19,7 @@ Output:
         "LongUrl": "https://docs.microsoft.com/en-ca/azure/azure-functions/functions-create-your-first-function-visual-studio"
     }
 */
-// mine now
+// mine
 using System;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
