@@ -117,7 +117,7 @@ namespace Cloud5mins.Function
                 if (!string.IsNullOrEmpty(vanity))
                 {
                     newRow = new ShortUrlEntity(longUrl, vanity, title, input.Schedules);
-                    newRow.ErstelltVon = principal.FindFirst(ClaimTypes.Email);
+                    newRow.ErstelltVon = principal.FindFirst(ClaimTypes.Name).Value;
                     if (await stgHelper.IfShortUrlEntityExist(newRow))
                     {
                         return new ConflictObjectResult(new{ Message = "This Short URL already exist."});
@@ -126,14 +126,14 @@ namespace Cloud5mins.Function
                 else
                 {
                     newRow = new ShortUrlEntity(longUrl, await Utility.GetValidEndUrl(vanity, stgHelper), title, input.Schedules);
-                    newRow.ErstelltVon = principal.FindFirst(ClaimTypes.Email);
+                    newRow.ErstelltVon = principal.FindFirst(ClaimTypes.Name).Value;
                 }
 
                 await stgHelper.SaveShortUrlEntity(newRow);
 
                 var host = string.IsNullOrEmpty(config["customDomain"]) ? req.Host.Host: config["customDomain"].ToString();
                 result = new ShortResponse(host, newRow.Url, newRow.RowKey, newRow.Title);
-                result.ErstelltVon = principal.FindFirst(ClaimTypes.Email);
+                result.ErstelltVon = principal.FindFirst(ClaimTypes.Name).Value;
                 log.LogInformation("Short Url created.");
             }
             catch (Exception ex)
