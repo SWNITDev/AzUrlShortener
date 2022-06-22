@@ -24,7 +24,9 @@ namespace Cloud5mins.domain
         public string ShortUrl { get; set; }
 
         public int Clicks { get; set; }
-
+        
+        public string ErstelltVon{ get; set; }
+        
         public bool? IsArchived { get; set; }
         public string SchedulesPropertyRaw { get; set; }
 
