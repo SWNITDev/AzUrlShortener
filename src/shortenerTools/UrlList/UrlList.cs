@@ -67,6 +67,7 @@ namespace Cloud5mins.Function
                 result.UrlList = await stgHelper.GetAllShortUrlEntities();
                 result.UrlList = result.UrlList.Where(p => !(p.IsArchived ?? false)).ToList();
                 //result.UrlList = result.UrlList.Where(p => (p.ErstelltVon == principal.FindFirst(ClaimTypes.Name).Value)).ToList(); 
+                //newCommit
                 var host = string.IsNullOrEmpty(config["customDomain"]) ? req.Host.Host: config["customDomain"].ToString();
                 foreach (ShortUrlEntity url in result.UrlList)
                 {
