@@ -103,7 +103,7 @@ namespace Cloud5mins.Function
                                                     });
                 }
 
-            return new OkObjectResult(result);
+            return new OkObjectResult(null);
         }
     }
 }
