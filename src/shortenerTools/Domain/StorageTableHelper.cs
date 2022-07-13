@@ -135,12 +135,15 @@ namespace Cloud5mins.domain
             return await SaveShortUrlEntity(originalUrl);
          }
 
-        public async Task<ShortUrlEntity> ArchiveShortUrlEntity(ShortUrlEntity urlEntity)
+        public async Task ArchiveShortUrlEntity(ShortUrlEntity urlEntity)
         {
             ShortUrlEntity originalUrl = await GetShortUrlEntity(urlEntity);
-            originalUrl.IsArchived = true;
+            //originalUrl.IsArchived = true;
+            CloudTable delTable = await GetTable("UrlsDetails");
+            TableOperation delOp = await TableOperation.Delete(urlEntity);
+            delTable.Execute(delOp);
 
-            return await SaveShortUrlEntity(originalUrl);
+           // return await SaveShortUrlEntity(originalUrl);
         }
 
 
