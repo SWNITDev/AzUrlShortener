@@ -92,7 +92,7 @@ namespace Cloud5mins.Function
 
                 StorageTableHelper stgHelper = new StorageTableHelper(config["UlsDataStorage"]);
 
-                result = await stgHelper.ArchiveShortUrlEntity(input);
+                await stgHelper.ArchiveShortUrlEntity(input);
             }
             catch (Exception ex)
             {
