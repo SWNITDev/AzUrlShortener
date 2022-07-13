@@ -140,8 +140,11 @@ namespace Cloud5mins.domain
             ShortUrlEntity originalUrl = await GetShortUrlEntity(urlEntity);
             //originalUrl.IsArchived = true;
             CloudTable delTable =  GetTable("UrlsDetails");
-            TableOperation delOp =  TableOperation.Delete(urlEntity);
-            delTable.Execute(delOp);
+            //TableOperation delOp =  TableOperation.Delete(urlEntity { ETag = "*" });
+            //delTable.Execute(delOp);
+            ITableEntity delEnt = urlEntity;
+            delEnt.ETag = "*";
+            TableOperation delOp = TableOperation.Delete(delEnt);
 
            // return await SaveShortUrlEntity(originalUrl);
         }
