@@ -142,10 +142,10 @@ namespace Cloud5mins.domain
             CloudTable delTable =  GetTable("UrlsDetails");
             //TableOperation delOp =  TableOperation.Delete(urlEntity { ETag = "*" });
             //delTable.Execute(delOp);
-            ITableEntity delEnt = urlEntity;
-            delEnt.ETag = "*";
-            TableOperation delOp = TableOperation.Delete(delEnt);
-
+            //ITableEntity delEnt = urlEntity;
+            //delEnt.ETag = "*";
+            TableOperation delOp = TableOperation.Delete(originalUrl);
+            delTable.Execute(delOp);
            // return await SaveShortUrlEntity(originalUrl);
         }
 
