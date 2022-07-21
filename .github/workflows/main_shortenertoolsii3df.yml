@@ -39,4 +39,4 @@ jobs:
           app-name: 'shortenertoolsii3df'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DAC777425BF24FFBB285D68AF8A9BA7A }}
+          publish-profile: ${{ secrets.URLLIVE }}
