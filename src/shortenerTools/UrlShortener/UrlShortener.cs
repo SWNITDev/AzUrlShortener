@@ -39,7 +39,7 @@ namespace Cloud5mins.Function
 
     public static class UrlShortener
     {
-
+    //kommentar
         [FunctionName("UrlShortener")]
         public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
